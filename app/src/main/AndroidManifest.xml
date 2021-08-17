@@ -19,6 +19,14 @@
         <activity
             android:name=".RollingDiceActivity"
             android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".LemonadeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Lemonade"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
