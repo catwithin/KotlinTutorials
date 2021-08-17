@@ -3,4 +3,5 @@
     <string name="hp_text">Be Merry</string>
     <string name="signature">Nek</string>
     <string name="roll">Roll</string>
+    <string name="rolledDicePlug">Dice hasn\'t been rolled yet</string>
 </resources>
