@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--  Tips Calculator styles  -->
     <!-- TextView style -->
     <style name="Widget.TipsCalculator.TextView" parent="Widget.MaterialComponents.TextView">
         <item name="android:minHeight">48dp</item>
@@ -18,6 +19,11 @@
         <item name="android:minHeight">48dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
+
+<!-- Words app styles -->
+    <style name="Widget.Words.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceHeadline4</item>
     </style>
 
 </resources>
