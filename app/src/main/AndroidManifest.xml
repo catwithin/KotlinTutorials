@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gamesofni.kotlinTutorials">
+    package="com.gamesofni.kotlinTutorials" >
 
     <application
         android:allowBackup="true"
@@ -8,25 +8,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Memoriarty">
+        android:theme="@style/Theme.KotlinTutorials" >
 
         <activity
             android:name=".HappyBirthActivity"
             android:exported="true" >
-
         </activity>
-
         <activity
             android:name=".RollingDiceActivity"
-            android:exported="true">
-
+            android:exported="true" >
         </activity>
-
         <activity
             android:name=".LemonadeActivity"
             android:exported="true"
-            android:theme="@style/Theme.Lemonade"
-            >
+            android:theme="@style/Theme.Lemonade" >
+        </activity>
+
+        <activity
+            android:name=".TipCalculatorActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
