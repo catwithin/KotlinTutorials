@@ -2,6 +2,7 @@ package com.gamesofni.kotlinTutorials.affirmations
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gamesofni.kotlinTutorials.R
 import com.gamesofni.kotlinTutorials.affirmations.data.Datasource
@@ -15,6 +16,11 @@ class AffirmationsActivity : AppCompatActivity() {
         val myDataset = Datasource().loadAffirmations()
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+
+        // Make a grid layout manager
+        GridLayoutManager(this,2, RecyclerView.VERTICAL,false )
+            .apply { recyclerView.layoutManager = this }
+
         recyclerView.adapter = ItemAdapter(this, myDataset)
 
         // Use this setting to improve performance if you know that changes
