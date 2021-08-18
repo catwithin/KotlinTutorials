@@ -23,6 +23,18 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/blue_light</item>
         <item name="colorSecondaryVariant">@color/blue_light</item>
+
+
+<!--  TODO: can we somehow avoid repeating these styles?? (is there include for styles/themes??)
+     -->
+        <!--  Material styled components applied across all the components of the app (in this
+        case, TipsCalculator Activity only)  -->
+        <!-- For text input fields -->
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <!-- For radio buttons -->
+        <item name="radioButtonStyle">@style/Widget.TipsCalculator.CompoundButton.RadioButton</item>
+        <!-- For switches -->
+        <item name="switchStyle">@style/Widget.TipsCalculator.CompoundButton.Switch</item>
     </style>
 
 
