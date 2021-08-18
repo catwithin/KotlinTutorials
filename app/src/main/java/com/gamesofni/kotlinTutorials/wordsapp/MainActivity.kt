@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         return true // means we want the options menu to be created
     }
-    
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_switch_layout -> {

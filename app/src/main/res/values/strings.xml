@@ -24,7 +24,7 @@
     <string name="calculate">Calculate</string>
     <string name="tip_amount">Tip Amount: %s</string>
 
-<!--  Affirmations  -->
+    <!--  Affirmations  -->
     <string name="affirmation1">I am strong.</string>
     <string name="affirmation2">I believe in myself.</string>
     <string name="affirmation3">Each day is a new opportunity to grow and be a better version of myself.</string>
@@ -36,9 +36,17 @@
     <string name="affirmation9">Things will unfold at precisely the right time.</string>
     <string name="affirmation10">I will be present in all the moments that this day brings.</string>
 
-<!--  Words app  -->
+    <!--  Words app  -->
     <string name="detail_prefix">Words That Start With</string>
     <string name="action_switch_layout">Switch Layout</string>
     <string name="look_up_word">Look up word in a Browser Search</string>
     <string name="look_up_words">Show Stored Words</string>
+
+
+<!--  Desserts clciking app  -->
+    <string name="dessert_sold">Desserts Sold</string>
+    <string name="share_text">I\'ve clicked %1$d Desserts for a total of %2$d$ #AndroidDessertClicker</string>
+    <string name="share">Share</string>
+    <string name="sharing_not_available">Sharing Not Available</string>
+
 </resources>

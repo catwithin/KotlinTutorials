@@ -35,9 +35,11 @@ android {
     }
 
 
-    // allows to use xmlLayoutNameBinding
     buildFeatures {
+        // allows to use xmlLayoutNameBinding
         viewBinding = true
+        // TODO: what's the diff?
+        dataBinding = true
     }
 
 }
