@@ -1,6 +1,5 @@
 package com.gamesofni.kotlinTutorials.wordsapp
 
-import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +7,9 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
 import androidx.annotation.RequiresApi
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.gamesofni.kotlinTutorials.R
-import com.gamesofni.kotlinTutorials.wordsapp.DetailActivity.Companion.LETTER
 
 class LetterAdapter :
     RecyclerView.Adapter<LetterAdapter.LetterViewHolder>() {
@@ -36,7 +35,7 @@ class LetterAdapter :
         val layout = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.wordsapp_item_view, parent, false)
-        // Setup custom accessibility delegate to set the text read
+        // Setup custom accessibility delegate to set the text read TODO: ??
         layout.accessibilityDelegate = Accessibility
         return LetterViewHolder(layout)
     }
@@ -48,14 +47,12 @@ class LetterAdapter :
         val item = list.get(position)
         holder.button.text = item.toString()
 
-        // explicit intent call to DetailActivity
+        // using Navigation Controller to switch Fragments
         holder.button.setOnClickListener {
-            val context = holder.view.context
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra(LETTER, holder.button.text.toString())
-            context.startActivity(intent)
+            val action =
+                LetterListFragmentDirections.actionLetterListFragmentToWordListFragment(letter = holder.button.text.toString())
+            holder.view.findNavController().navigate(action)
         }
-
 
     }
 

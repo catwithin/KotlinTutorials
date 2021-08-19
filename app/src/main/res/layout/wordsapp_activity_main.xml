@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".wordsapp.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/nav_graph"
+        app:defaultNavHost="true"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:padding="16dp" />
+    />
+
+    <!-- android:name="androidx.navigation.fragment.NavHostFragment"   -->
+    <!-- enable FragmentContainerView navigation  -->
+
+    <!-- app:navGraph="@navigation/nav_graph"   -->
+    <!-- points to the app's nav graph   -->
+
+    <!-- app:defaultNavHost="true"  -->
+    <!-- allows the fragment container to interact with the navigation hierarchy (back button moves between fragments)   -->
+
 </FrameLayout>
