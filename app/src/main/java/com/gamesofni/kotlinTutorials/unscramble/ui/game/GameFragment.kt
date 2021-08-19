@@ -58,11 +58,17 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Observe the currentScrambledWord LiveData.
+        viewModel.currentScrambledWord.observe(
+            // The viewLifecycleOwner represents the Fragment's View lifecycle
+            viewLifecycleOwner,
+            { newWord -> binding.textViewUnscrambledWord.text = newWord }
+        )
+
         // Setup a click listener for the Submit and Skip buttons.
         binding.submit.setOnClickListener { onSubmitWord() }
         binding.skip.setOnClickListener { onSkipWord() }
         // Update the UI
-        updateNextWordOnScreen()
         binding.score.text = getString(R.string.score, 0)
         binding.wordCount.text = getString(
                 R.string.word_count, 0, MAX_NO_OF_WORDS)
@@ -84,11 +90,7 @@ class GameFragment : Fragment() {
 
         if (viewModel.isUserWordCorrect(playerWord)) {
             setErrorTextField(false)
-            if (viewModel.stillPlaying()) {
-                updateNextWordOnScreen()
-            } else {
-                showFinalScoreDialog()
-            }
+            if (!viewModel.stillPlaying()) showFinalScoreDialog()
         } else {
             setErrorTextField(true)
         }
@@ -100,7 +102,6 @@ class GameFragment : Fragment() {
     private fun onSkipWord() {
         if (viewModel.stillPlaying()) {
             setErrorTextField(false)
-            updateNextWordOnScreen()
         } else {
             showFinalScoreDialog()
         }
@@ -123,7 +124,6 @@ class GameFragment : Fragment() {
         viewModel.reinitializeData()
 
         setErrorTextField(false)
-        updateNextWordOnScreen()
     }
 
     /*
@@ -152,7 +152,7 @@ class GameFragment : Fragment() {
             }
             .show()
     }
-    
+
     /*
     * Sets and resets the text field error status.
     */
@@ -166,11 +166,5 @@ class GameFragment : Fragment() {
         }
     }
 
-    /*
-     * Displays the next scrambled word on screen.
-     */
-    private fun updateNextWordOnScreen() {
-        binding.textViewUnscrambledWord.text = viewModel.currentScrambledWord
-    }
 
 }

@@ -1,20 +1,23 @@
 package com.gamesofni.kotlinTutorials.unscramble.ui.game
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
 
     private var _score = 0
     private var _currentWordCount = 0
-    private lateinit var _currentScrambledWord: String
+    private val _currentScrambledWord = MutableLiveData<String>()
 
 
     val score: Int
         get() = _score
     val currentWordCount : Int
         get() = _currentWordCount
-    val currentScrambledWord: String
+    // notice LiveData type - immutable
+    val currentScrambledWord: LiveData<String>
         get() = _currentScrambledWord
 
     private var _usedWordsList: MutableList<String> = mutableListOf()
@@ -48,7 +51,7 @@ class GameViewModel : ViewModel() {
         }
 //        Log.d("GameFragment", "Final: ${String(tempWord)}")
 
-        _currentScrambledWord = String(tempWord)
+        _currentScrambledWord.value = String(tempWord)
         ++_currentWordCount
         _usedWordsList.add(_currentWord)
     }
