@@ -10,7 +10,7 @@
         android:id="@+id/nav_host_fragment"
 
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/nav_graph"
+        app:navGraph="@navigation/wordsapp_nav_graph"
         app:defaultNavHost="true"
 
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
     <!-- android:name="androidx.navigation.fragment.NavHostFragment"   -->
     <!-- enable FragmentContainerView navigation  -->
 
-    <!-- app:navGraph="@navigation/nav_graph"   -->
+    <!-- app:navGraph="@navigation/wordsapp_nav_graph"   -->
     <!-- points to the app's nav graph   -->
 
     <!-- app:defaultNavHost="true"  -->

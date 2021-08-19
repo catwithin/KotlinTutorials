@@ -45,6 +45,14 @@
 
         <activity android:name=".unscramble.MainActivity"
             android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".cupcake.MainActivity"
+            android:theme="@style/Theme.Cupcake"
+            android:exported="true"
+            android:label="@string/cupcake_app_name"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
