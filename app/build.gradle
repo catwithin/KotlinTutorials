@@ -2,6 +2,9 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 
+    // is needed for dataBinding
+    id 'kotlin-kapt'
+
     // safeargs
     id 'androidx.navigation.safeargs.kotlin'
 
@@ -41,8 +44,11 @@ android {
 
     buildFeatures {
         // allows to use xmlLayoutNameBinding
+        // in reality need to pick one of them, but I have different apps, so will leave
+        // both uncommented
         viewBinding = true
-        // TODO: what's the diff?
+        // Compared to viewBinding allows to declare in layout which field it is bind to so it
+        // would get updated automatically
         dataBinding = true
     }
 
