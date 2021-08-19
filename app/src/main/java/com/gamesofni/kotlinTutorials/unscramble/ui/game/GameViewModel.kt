@@ -1,8 +1,12 @@
 package com.gamesofni.kotlinTutorials.unscramble.ui.game
 
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.TtsSpan
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
@@ -11,14 +15,27 @@ class GameViewModel : ViewModel() {
     private val _currentWordCount = MutableLiveData(0)
     private val _currentScrambledWord = MutableLiveData<String>()
 
-
+    // notice LiveData type - immutable
     val score: LiveData<Int>
         get() = _score
     val currentWordCount: LiveData<Int>
         get() = _currentWordCount
-    // notice LiveData type - immutable
-    val currentScrambledWord: LiveData<String>
-        get() = _currentScrambledWord
+    // using Spannable to make app accessible - making Talkback spell the word verbatim
+    val currentScrambledWord: LiveData<Spannable> = Transformations.map(_currentScrambledWord) {
+        if (it == null) {
+            SpannableString("")
+        } else {
+            val scrambledWord = it.toString()
+            val spannable: Spannable = SpannableString(scrambledWord)
+            spannable.setSpan(
+                TtsSpan.VerbatimBuilder(scrambledWord).build(),
+                0,
+                scrambledWord.length,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE
+            )
+            spannable
+        }
+    }
 
     private var _usedWordsList: MutableList<String> = mutableListOf()
     private lateinit var _currentWord: String
