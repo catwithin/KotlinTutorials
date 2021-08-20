@@ -19,8 +19,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.gamesofni.kotlinTutorials.R
+import com.gamesofni.kotlinTutorials.cupcake.model.OrderViewModel
 import com.gamesofni.kotlinTutorials.databinding.CupcakeFragmentFlavorBinding
 
 /**
@@ -32,6 +35,8 @@ class FlavorFragment : Fragment() {
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
     private var binding: CupcakeFragmentFlavorBinding? = null
+
+    private val sharedViewModel: OrderViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,16 +50,34 @@ class FlavorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // basically equals to binding.viewModel = sharedViewModel and binding.nextB.setOnCl..
         binding?.apply {
-            nextButton.setOnClickListener { goToNextScreen() }
+            // associate lifecycle owner with observable liveData
+            lifecycleOwner = viewLifecycleOwner
+            // set viewModel to the OrderViewModel supplied by activityViewModels
+            viewModel = sharedViewModel
+
+//            instead of setting the onClick Listener here, can bind it in the layout
+//            nextButton.setOnClickListener { goToNextScreen() }
+//            binding the fragment data variable with the fragment instance
+//            since we are inside the apply, this=binding => using @ to explicitly specify the
+//            class name
+            flavorFragment = this@FlavorFragment
+
         }
     }
+
+    fun cancelOrder() {
+        sharedViewModel.resetOrder()
+        findNavController().navigate(R.id.action_flavorFragment_to_startFragment)
+    }
+
 
     /**
      * Navigate to the next screen to choose pickup date.
      */
     fun goToNextScreen() {
-        Toast.makeText(activity, "Next", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
     }
 
     /**

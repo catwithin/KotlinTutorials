@@ -19,6 +19,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".cupcake.SummaryFragment">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.gamesofni.kotlinTutorials.cupcake.model.OrderViewModel"
+        />
+        <variable
+            name="summaryFragment"
+            type="com.gamesofni.kotlinTutorials.cupcake.SummaryFragment"
+        />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -48,6 +59,8 @@
 
                 <TextView
                     android:id="@+id/quantity"
+                    android:text="@{viewModel.quantity.toString()}"
+
                     style="@style/Widget.Cupcake.TextView.OrderSummary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -71,6 +84,8 @@
 
                 <TextView
                     android:id="@+id/flavor"
+                    android:text="@{viewModel.flavor}"
+
                     style="@style/Widget.Cupcake.TextView.OrderSummary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,6 +109,8 @@
 
                 <TextView
                     android:id="@+id/date"
+                    android:text="@{viewModel.date}"
+
                     style="@style/Widget.Cupcake.TextView.OrderSummary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,6 +127,7 @@
 
                 <TextView
                     android:id="@+id/total"
+                    android:text="@{@string/total_price(viewModel.price)}"
                     style="@style/Widget.Cupcake.TextView.FinalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -125,6 +143,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/side_margin"
                 android:text="@string/send" />
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:onClick="@{() -> summaryFragment.cancelOrder()}"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:text="@string/cancel" />
+
 
         </LinearLayout>
     </ScrollView>
