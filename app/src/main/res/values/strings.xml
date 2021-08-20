@@ -97,4 +97,6 @@
         <item quantity="other">%d cupcakes</item>
     </plurals>
 
+<!-- Mars App -->
+    <string name="mars_app_name">Mars Photos</string>
 </resources>
