@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.gamesofni.kotlinTutorials.databinding.MarsphotosFragmentOverviewBinding
+import com.gamesofni.kotlinTutorials.databinding.MarsphotosGridViewItemBinding
 
 /**
  * This fragment shows the the status of the Mars photos web services transaction.
@@ -39,7 +40,8 @@ class OverviewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = MarsphotosFragmentOverviewBinding.inflate(inflater)
+//        val binding = MarsphotosFragmentOverviewBinding.inflate(inflater)
+        val binding = MarsphotosGridViewItemBinding.inflate(inflater)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = this

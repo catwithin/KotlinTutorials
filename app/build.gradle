@@ -34,11 +34,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_13
-        targetCompatibility JavaVersion.VERSION_13
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '13'
+        jvmTarget = '1.8'
     }
 
 
@@ -74,4 +74,18 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     // LiveData
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+
+    // Retrofit
+//    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    // Retrofit scalar (enough to convert JSON to String)
+//    implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
+
+    // Moshi JSON parser
+    implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
+    // Retrofit wth a converter that works with Moshi
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+    // Coil
+    implementation "io.coil-kt:coil:1.1.1"
+
 }
