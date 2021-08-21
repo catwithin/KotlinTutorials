@@ -24,18 +24,21 @@ import com.gamesofni.kotlinTutorials.marsphotos.network.MarsApi
 import com.gamesofni.kotlinTutorials.marsphotos.network.MarsPhoto
 import kotlinx.coroutines.launch
 
+
+enum class MarsApiStatus { LOADING, ERROR, DONE }
+
 /**
  * The [ViewModel] that is attached to the [OverviewFragment].
  */
 class OverviewViewModel : ViewModel() {
 
     // The internal MutableLiveData that stores the status of the most recent request
-    private val _status = MutableLiveData<String>()
-    private val _photos = MutableLiveData<MarsPhoto>()
+    private val _status = MutableLiveData<MarsApiStatus>()
+    private val _photos = MutableLiveData<List<MarsPhoto>>()
 
     // The external immutable LiveData for the request status
-    val status: LiveData<String> = _status
-    val photos: LiveData<MarsPhoto> = _photos
+    val status: LiveData<MarsApiStatus> = _status
+    val photos: LiveData<List<MarsPhoto>> = _photos
 
     /**
      * Call getMarsPhotos() on init so we can display status immediately.
@@ -51,19 +54,22 @@ class OverviewViewModel : ViewModel() {
     private fun getMarsPhotos() {
         viewModelScope.launch {
             // TODO: how to make it auto-refresh when connection is re-established??
+            _status.value = MarsApiStatus.LOADING
             try {
 //                val listResult = MarsApi.retrofitService.getPhotos()
-                _photos.value = MarsApi.retrofitService.getPhotos()[0]
+                _photos.value = MarsApi.retrofitService.getPhotos()
 
                 // with scalar String result
 //                _status.value = listResult
                 // with Mosdhi converter
 //                _status.value = "Success: ${listResult.size} Mars photos retrieved"
-                _status.value = "   First Mars image URL : ${_photos.value!!.imgSrcUrl}"
+//                _status.value = "   First Mars image URL : ${_photos.value!!.imgSrcUrl}"
+                _status.value = MarsApiStatus.DONE
 
             } catch (e: Exception) {
                 // catching no internet exception
-                _status.value = "Failure: ${e.message}"
+                _status.value = MarsApiStatus.ERROR
+                _photos.value = listOf()
             }
         }
     }
