@@ -13,7 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 
-<!--  Lemonade theme  -->
+    <!--  Lemonade theme  -->
     <style name="Theme.Lemonade" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/yellow_primary</item>
@@ -24,7 +24,7 @@
     </style>
 
 
-<!--  Tips Calculator green theme  -->
+    <!--  Tips Calculator green theme  -->
     <style name="Theme.TipsCalculator" parent="Theme.KotlinTutorials">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/green</item>
@@ -38,7 +38,8 @@
         <!--  Material styled components applied across all the components of the app (in this
         case, TipsCalculator Activity only)  -->
         <!-- For text input fields -->
-        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox
+        </item>
         <!-- For radio buttons -->
         <item name="radioButtonStyle">@style/Widget.TipsCalculator.CompoundButton.RadioButton</item>
         <!-- For switches -->
@@ -75,5 +76,16 @@
         <!-- Text appearance style. -->
         <item name="textAppearanceSubtitle1">@style/TextAppearance.Cupcake.Subtitle1</item>
     </style>
+
+    <style name="Theme.KotlinTutorials.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.KotlinTutorials.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.KotlinTutorials.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 
 </resources>
