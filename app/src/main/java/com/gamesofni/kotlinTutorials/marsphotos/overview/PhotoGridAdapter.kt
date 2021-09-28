@@ -6,24 +6,24 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gamesofni.kotlinTutorials.databinding.MarsphotosGridViewItemBinding
-import com.gamesofni.kotlinTutorials.marsphotos.network.MarsPhoto
+import com.gamesofni.kotlinTutorials.marsphotos.network.MarsProperty
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
  * data, including computing diffs between lists.
  */
 class PhotoGridAdapter :
-    ListAdapter<MarsPhoto, PhotoGridAdapter.MarsPhotosViewHolder>(DiffCallback) {
+    ListAdapter<MarsProperty, PhotoGridAdapter.MarsPhotosViewHolder>(DiffCallback) {
 
     /**
      * The MarsPhotosViewHolder constructor takes the binding variable from the associated
-     * GridViewItem, which nicely gives it access to the full [MarsPhoto] information.
+     * GridViewItem, which nicely gives it access to the full [MarsProperty] information.
      */
     class MarsPhotosViewHolder(
         private var binding: MarsphotosGridViewItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(marsPhoto: MarsPhoto) {
-            binding.photo = marsPhoto
+        fun bind(marsProperty: MarsProperty) {
+            binding.property = marsProperty
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
             binding.executePendingBindings()
@@ -32,14 +32,14 @@ class PhotoGridAdapter :
 
     /**
      * Allows the RecyclerView to determine which items have changed when the [List] of
-     * [MarsPhoto] has been updated.
+     * [MarsProperty] has been updated.
      */
-    companion object DiffCallback : DiffUtil.ItemCallback<MarsPhoto>() {
-        override fun areItemsTheSame(oldItem: MarsPhoto, newItem: MarsPhoto): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<MarsProperty>() {
+        override fun areItemsTheSame(oldItem: MarsProperty, newItem: MarsProperty): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: MarsPhoto, newItem: MarsPhoto): Boolean {
+        override fun areContentsTheSame(oldItem: MarsProperty, newItem: MarsProperty): Boolean {
             return oldItem.imgSrcUrl == newItem.imgSrcUrl
         }
     }

@@ -21,7 +21,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gamesofni.kotlinTutorials.marsphotos.network.MarsApi
-import com.gamesofni.kotlinTutorials.marsphotos.network.MarsPhoto
+import com.gamesofni.kotlinTutorials.marsphotos.network.MarsProperty
 import kotlinx.coroutines.launch
 
 
@@ -34,11 +34,11 @@ class OverviewViewModel : ViewModel() {
 
     // The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<MarsApiStatus>()
-    private val _photos = MutableLiveData<List<MarsPhoto>>()
+    private val _photos = MutableLiveData<List<MarsProperty>>()
 
     // The external immutable LiveData for the request status
     val status: LiveData<MarsApiStatus> = _status
-    val photos: LiveData<List<MarsPhoto>> = _photos
+    val photos: LiveData<List<MarsProperty>> = _photos
 
     /**
      * Call getMarsPhotos() on init so we can display status immediately.
@@ -49,7 +49,7 @@ class OverviewViewModel : ViewModel() {
 
     /**
      * Gets Mars photos information from the Mars API Retrofit service and updates the
-     * [MarsPhoto] [List] [LiveData].
+     * [MarsProperty] [List] [LiveData].
      */
     private fun getMarsPhotos() {
         viewModelScope.launch {

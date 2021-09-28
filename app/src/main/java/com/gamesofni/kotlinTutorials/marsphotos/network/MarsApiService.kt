@@ -4,7 +4,6 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import com.gamesofni.kotlinTutorials.marsphotos.network.MarsPhoto
 import retrofit2.http.GET
 
 private const val BASE_URL =
@@ -24,13 +23,13 @@ private val retrofit = Retrofit.Builder()
 
 interface MarsApiService {
     // specifies GET request /photos endpoint
-    @GET("photos")
+    @GET("realestate")
     // suspend to be able to call it from within a coroutine
     // with scalar to String converter
 //    suspend fun getPhotos(): String
     // with Moshi to Kotlin Obj converter
     // TODO: another bug, they forgot suspend (also photo instead of photos)
-    suspend fun getPhotos(): List<MarsPhoto>
+    suspend fun getPhotos(): List<MarsProperty>
 
 }
 

@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.gamesofni.kotlinTutorials.R
-import com.gamesofni.kotlinTutorials.marsphotos.network.MarsPhoto
+import com.gamesofni.kotlinTutorials.marsphotos.network.MarsProperty
 import com.gamesofni.kotlinTutorials.marsphotos.overview.MarsApiStatus
 import com.gamesofni.kotlinTutorials.marsphotos.overview.PhotoGridAdapter
 
@@ -27,7 +27,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView,
-                     data: List<MarsPhoto>?) {
+                     data: List<MarsProperty>?) {
     val adapter = recyclerView.adapter as PhotoGridAdapter
     adapter.submitList(data)
 
