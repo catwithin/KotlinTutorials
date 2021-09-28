@@ -77,6 +77,14 @@
             android:exported="true"
             android:label="@string/sqlbasics_app_name"
             >
+        </activity>
+
+        <activity
+            android:name=".guesstheword.MainActivity"
+            android:exported="true"
+            android:label="@string/guesstheword_app_name"
+            android:theme="@style/GuessTheWordAppTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
