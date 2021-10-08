@@ -17,11 +17,13 @@
 package com.gamesofni.kotlinTutorials.guesstheword.screens.game
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.gamesofni.kotlinTutorials.R
 import com.gamesofni.kotlinTutorials.databinding.GuessthewordGameFragmentBinding
 
@@ -41,6 +43,8 @@ class GameFragment : Fragment() {
 
     private lateinit var binding: GuessthewordGameFragmentBinding
 
+    private lateinit var viewModel: GameViewModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -59,6 +63,10 @@ class GameFragment : Fragment() {
         binding.skipButton.setOnClickListener { onSkip() }
         updateScoreText()
         updateWordText()
+
+        Log.i("GameFragment", "Called ViewModelProvider.get")
+        viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+
         return binding.root
 
     }
