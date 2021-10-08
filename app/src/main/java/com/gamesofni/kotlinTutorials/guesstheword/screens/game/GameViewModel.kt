@@ -1,13 +1,20 @@
 package com.gamesofni.kotlinTutorials.guesstheword.screens.game
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
 
-    val word = MutableLiveData<String>("")
-    val score = MutableLiveData<Int>(0)
+    private val _word = MutableLiveData<String>("")
+    val word: LiveData<String>
+        get() = _word
+
+    private val _score = MutableLiveData<Int>(0)
+    val score: LiveData<Int>
+        get() = _score
+
     lateinit var wordList: MutableList<String>
 
 
@@ -61,17 +68,17 @@ class GameViewModel : ViewModel() {
     private fun nextWord() {
         if (!wordList.isEmpty()) {
             //Select and remove a word from the list
-            word.value = wordList.removeAt(0)
+            _word.value = wordList.removeAt(0)
         }
     }
 
     fun onSkip() {
-        score.value = (score.value)?.minus(1)
+        _score.value = (_score.value)?.minus(1)
         nextWord()
     }
 
     fun onCorrect() {
-        score.value = (score.value)?.plus(1)
+        _score.value = (_score.value)?.plus(1)
         nextWord()
     }
 
