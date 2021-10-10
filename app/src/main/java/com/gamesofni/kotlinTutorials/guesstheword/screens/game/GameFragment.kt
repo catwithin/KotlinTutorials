@@ -64,9 +64,7 @@ class GameFragment : Fragment() {
             if (hasFinished) gameFinished()
         })
 
-        binding.correctButton.setOnClickListener { onCorrect() }
-        binding.skipButton.setOnClickListener { onSkip() }
-        binding.endGameButton.setOnClickListener { onEndGame() }
+        binding.gameViewModel = viewModel
 
         return binding.root
 
@@ -80,20 +78,6 @@ class GameFragment : Fragment() {
         val action = GameFragmentDirections.actionGameToScore(viewModel.score.value?:0)
         NavHostFragment.findNavController(this).navigate(action)
         viewModel.onGameFinishComplete()
-    }
-
-    /** Methods for buttons presses **/
-
-    private fun onSkip() {
-        viewModel.onSkip()
-    }
-
-    private fun onCorrect() {
-        viewModel.onCorrect()
-    }
-
-    private fun onEndGame() {
-        gameFinished()
     }
 
 }
