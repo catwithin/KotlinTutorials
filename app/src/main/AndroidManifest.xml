@@ -85,11 +85,30 @@
             android:label="@string/guesstheword_app_name"
             android:theme="@style/GuessTheWordAppTheme"
             >
+        </activity>
+
+        <activity
+            android:name=".eggtimernotifications.MainActivity"
+            android:exported="true"
+            android:label="@string/eggtimer_app_name"
+            >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".eggtimernotifications.receiver.AlarmReceiver"
+            android:enabled="true"
+            android:exported="false">
+        </receiver>
+        <receiver
+            android:name=".eggtimernotifications.receiver.SnoozeReceiver"
+            android:enabled="true"
+            android:exported="false">
+        </receiver>
 
     </application>
 
